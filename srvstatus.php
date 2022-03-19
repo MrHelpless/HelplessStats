@@ -38,10 +38,12 @@
             * {
                 font-family: sans-serif;
                 color: #fff;
+                text-align: center;
+                overflow: hidden;
             }
 
             html, body {
-                background: #3B3B3B;
+                background: #443177;
             }
 
             .wrapper {
@@ -57,7 +59,7 @@
                 margin: 32px;
                 width: 150px;
                 height: 150px;
-                background: #9f9f9f;
+                background: #6d6d6d;
                 border-radius: 50%;
                 box-shadow: 0px 0px 16px #000;
             }
@@ -71,7 +73,7 @@
             }
             .mask .fill {
                 clip: rect(0px, 75px, 150px, 0px);
-                background-color: #3b0000;
+                background-color: #61508f;
             }
 
             .circle-wrap .circle .mask {
@@ -82,7 +84,7 @@
                 width: 122px;
                 height: 122px;
                 border-radius: 50%;
-                background: #6d6d6d;
+                background: #ffffff;
                 line-height: 120px;
                 text-align: center;
                 margin-top: 14px;
@@ -94,7 +96,7 @@
             .circle-wrap .inside-circle h2 {
                 margin: 0;
                 padding: 0;
-                color: #3b0000;
+                color: #61508f;
                 font-weight: 700;
                 font-size: 32px;
                 line-height: 90px;
@@ -102,7 +104,7 @@
             .circle-wrap .inside-circle p {
                 margin: 0;
                 padding: 0;
-                color: #3b0000;
+                color: #61508f;
                 font-weight: 700;
                 font-size: 16px;
                 line-height: 20px;

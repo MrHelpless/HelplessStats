@@ -58,7 +58,8 @@
                 <div class="box">
                     <h1>Server Status</h1>
                     <p>Status: <?php if ($serverStatus->online == true) { echo '<span style="color: #00ff00;">Online</span>'; } else { echo '<span style="color: #ff0000;">Offline</span>'; }; ?></p>   <!--Online-Status from api.mcsrvstat.us-->
-                    <p>Player: <?php echo $serverStatus->onlinePlayer . ' / ' . $serverStatus->maxPlayer; ?>    <!--Count of Online Player from api.mcsrvstat.us / Count fo total Player from $userFullList-->
+                    <p>Player: <?php echo $serverStatus->onlinePlayer . ' / ' . $serverStatus->maxPlayer; ?></p>    <!--Count of Online Player from api.mcsrvstat.us / Count fo total Player from $userFullList-->
+                    <br><iframe style="width: 100%; height: 212px; overflow: hidden; border: none;" src="/srvstatus.php" title="Server Status"></iframe>
                 </div>
                 <div class="box">
                     <h1>Last active Users</h1>
