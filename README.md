@@ -5,7 +5,7 @@
 It shows if your Server is online, how much Player are online, How was last online, the Size of you Worlds and some more Stuff.
 
 **Screenshots**
-![Screenshot](MrHelpless/HelplessStats/raw/main/screenshot.png "Screenshot")
+![Screenshot](/MrHelpless/HelplessStats/blob/main/screenshot.png?raw=true "Screenshot")
 
 **This Project is using:**
 >https://crafatar.com/ for Avatar Skins
