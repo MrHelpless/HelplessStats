@@ -11,13 +11,13 @@
         "motd" => ""
     ];
 
-    if ($status->debug->ping == true) {
+    if ($status->debug->ping == true) { //If Server is Online
         $serverStatus->online = true;
         $serverStatus->version = $status->version;
         $serverStatus->onlinePlayer = $status->players->online;
         $serverStatus->maxPlayer = $status->players->max;
         $serverStatus->motd = $status->motd->html;
-    } else {
+    } else {                            //If Server is Offline
         $serverStatus->online = false;
     }
 ?>
