@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html lang=en>
+
+    <head>
+        <title>mc.mrhelpless.xyz >> Code Preview >> HelplessPlugin</title>
+        <style>
+            * {
+                font-family: monospace;
+                text-decoration: none;
+            }
+
+            html, body {
+                margin: 0;
+                padding: 0;
+
+                width: 100vw;
+                height: 100vh;
+
+                background: #292B2D;
+            }
+
+            a {
+                cursor: pointer;
+            }
+
+            .navbar {
+                width: 100%;
+                height: 32px;
+
+                background: #36393F;
+                border-bottom: solid 1px #000000;
+            }
+            .navbar a {
+                float: left;
+                color: #00DEAD;
+
+                transition: 0.3s;
+            }
+            .navbar a:hover {
+                color: #ccDEAD;
+            }
+            .navbar a.nLogo h1 {
+                margin: 0 6px;
+            }
+            .navbar a.nLink {
+                margin: 8px 6px;
+                font-weight: bold;
+            }
+
+            .code {
+                color: #00DEAD;
+                white-space: pre;
+            }
+            .line {
+                clear: both;
+
+                border-bottom: solid 1px #000000;;
+            }
+            .row {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+
+                width: 32px;
+                margin: 0 10px 0 0;
+                padding: 0 0 0 10px;
+                float: left;
+
+                background: #36393F;
+                border-right: solid 1px #000000;
+            }
+        </style>
+
+        <script src="js/jquery-3.6.0.js"></script>
+        
+    </head>
+
+    <body>
+
+        <div class="header">
+            <div class="navbar">
+                <a class="nLogo" href="./"><h1>HelplessPlugin</h1></a>
+                <a class="nLink" onclick="loadCode('Main.java');">Main.java</a>
+                <a class="nLink" onclick="loadCode('KillCommand.java');">KillCommand.java</a>
+                <a class="nLink" onclick="loadCode('PingCommand.java');">PingCommand.java</a>
+                <a class="nLink" onclick="loadCode('TpsCommand.java');">TpsCommand.java</a>
+                <a class="nLink" onclick="loadCode('Tps.java');">Tps.java</a>
+                <a class="nLink" onclick="loadCode('TablistManager.java');">TablistManager.java</a>
+                <a class="nLink" onclick="loadCode('JoinListener.java');">JoinListener.java</a>
+                <a class="nLink" onclick="loadCode('QuitListener.java');">QuitListener.java</a>
+                <a class="nLink" onclick="loadCode('DeathListener.java');">DeathListener.java</a>
+                <a class="nLink" onclick="loadCode('plugin.yml');">plugin.yml</a>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <div id="code" class="code">
+
+            </div>
+        </div>
+
+    </body>
+
+</html>
+
+<script>
+    function loadCode(file) {
+        $.get( file, function(data) {
+            var code = "";
+            var lines = data.split('\n');
+            for(var line = 0; line < lines.length; line++){
+                if(!lines[line] == "") {
+                    code += "<div class=\"line\"><div class=\"row\">" + (line + 1) + "</div>" + htmlSpecialChars(lines[line]) + "</div>";
+                } else {
+                    code += "<div class=\"line\"><div class=\"row\">" + (line + 1) + "</div> </div>";
+                }
+            }
+            document.getElementById('code').innerHTML = code;
+        });
+    }
+
+    function htmlSpecialChars(text) {
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    loadCode('Main.java');
+</script>

@@ -1,0 +1,21 @@
+name: HelplessPlugin
+version: 0.7
+main: xyz.mrhelpless.helplessplugin.Main
+api-version: 1.18
+prefix: HLP
+authors: [ MrHelpless ]
+description: Plugin made for mc.mrhelpless.xyz
+website: https://www.mrhelpless.xyz
+
+commands:
+  hkill:
+    description: Kill command if you're stuck.
+    usage: /hkill
+  htps:
+    description: Shows you the current Ticks per Second.
+    usage: /htps
+    aliases: [ ht ]
+  hping:
+    description: Shows your current ping to the Server.
+    usage: /hping
+    aliases: [ hp ]

@@ -1,0 +1,164 @@
+:root {
+    --dark_purple: #443177;
+    --light_purple: #61508f;
+    --dark_gray: #3B3B3B;
+    --white: #ffffff;
+    --black: #000000;
+}
+
+
+
+* {
+    font-family: sans-serif;
+
+    color: var(--white);
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    
+    margin: 0;
+    padding: 0;
+
+    background: var(--dark_gray);
+}
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+html {
+  height: -webkit-fill-available;
+}
+
+a {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar {
+    width: 100%;
+    height: 64px;
+
+    background: var(--dark_purple);
+    box-shadow: 0px 0px 5px var(--black);
+}
+a.nLogo {
+    position: relative;
+    top: 11px;
+    margin: 0 16px;
+    font-size: 32px;
+}
+a.nLogo:hover {
+    
+}
+.nLink {
+    position: relative;
+    top: 11px;
+    margin: 0 16px;
+    font-size: 24px;
+}
+.nLink:hover {
+    
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+}
+
+.content {
+    max-width: 1080px;
+    width: 80%;
+    min-width: 600px;
+    min-height: calc(100% - 64px - 32px);
+
+    margin: 0;
+
+    position: relative;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: inline-block;
+}
+
+.box {
+    margin: 16px 8px;
+    padding: 8px;
+    text-align: center;
+    border-radius: 8px;
+    background: var(--dark_purple);
+    box-shadow: 0px 0px 5px var(--black);
+}
+
+table {
+
+}
+tbody {
+
+}
+tr {
+    
+}
+tr:nth-child(odd) {
+    background: var(--dark_purple);
+}
+tr:nth-child(even) {
+    background: var(--light_purple);
+}
+th {
+
+}
+td {
+    
+}
+
+
+.footer {
+    width: 100%;
+    height: 32px;
+    text-align: center;
+    background: var(--dark_purple);
+    box-shadow: 0px 0px 5px var(--black);
+    clear: both;
+}
+.footer p {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+
+    z-index: 200;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--dark_purple);
+    box-shadow: 0px 0px 5px var(--black);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--light_purple);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--light_purple);
+}
