@@ -10,9 +10,9 @@ The page shows if the server is online, how many players are online, which playe
 
 **This Project is using:**
 
-- ```https://crafatar.com/ for avatar skins```
-- ```https://api.mcsrvstat.us/ for online status and some other informations```
-- ```https://jquery.com for some Site things```
+- [Crafatar](https://crafatar.com/) for avatar skins
+- [MCSrvStatus](https://api.mcsrvstat.us/) for online status and some other informations
+- [OpenJSF](https://openjsf.org/) ([MIT license](https://jquery.org/license/)) for some Site things
 
 **Requirements:**
 
