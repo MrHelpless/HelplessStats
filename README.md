@@ -1,16 +1,19 @@
 # HelplessStats
 
-## A simple Website to show Stats from your Minecraft Server
+## A simple website to show stats from your minecraft server
 
-It shows if your Server is online, how much Player are online, How was last online, the Size of you Worlds and some more Stuff.
+The page shows if the server is online, how many players are online, which players were last active, the size of the worlds and a few other things.
 
-**Screenshots**
+**Screenshots:**
+
 ![Screenshot](screenshot.png?raw=true "Screenshot")
 
 **This Project is using:**
->https://crafatar.com/ for Avatar Skins
->https://api.mcsrvstat.us/ for Online Status and some other Informations
->https://jquery.com for some Site things
 
-**Requirements**
-> Webserver, PHP
+- ```https://crafatar.com/ for avatar skins```
+- ```https://api.mcsrvstat.us/ for online status and some other informations```
+- ```https://jquery.com for some Site things```
+
+**Requirements:**
+
+``` Webserver, PHP```
