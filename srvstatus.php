@@ -6,6 +6,8 @@
         return $load;
     }
 
+    $serverCpuUsage = getServerCpuUsage();
+
     function getServerMemUsage() {
         $free = shell_exec('free');
         $free = (string)trim($free);
@@ -20,6 +22,8 @@
         //[<1GB/4GB>, <25%>]<meta http-equiv="refresh" content="5">
         return [$memUsageInGiga, $memUsageInPerc];
     }
+
+    $serverMemUsage = getServerMemUsage();
 ?>
 
 
@@ -115,12 +119,19 @@
             #cpu .circle .mask.full,
             #cpu .circle .fill {
                 animation: fillcpu ease-in-out 1s;
-                transform: rotate(<?php echo (360/100) * getServerCpuUsage() / 2 ?>deg);
+                transform: rotate(<?php
+                    if($serverCpuUsage <= 100)
+                    {
+                        echo (360/100) * $serverCpuUsage / 2;
+                    } else {
+                        echo (360/100) * 100 / 2;
+                    }
+                ?>deg);
             }
             #mem .circle .mask.full,
             #mem .circle .fill {
                 animation: fillmem ease-in-out 1s;
-                transform: rotate(<?php echo (360/100) * getServerMemUsage()[1] / 2 ?>deg);
+                transform: rotate(<?php echo (360/100) * $serverMemUsage[1] / 2 ?>deg);
             }
             
 
@@ -130,7 +141,7 @@
                     transform: rotate(0deg);
                 }
                 100% {
-                    transform: rotate(<?php echo (360/100) * getServerCpuUsage() / 2 ?>deg);
+                    transform: rotate(<?php echo (360/100) * $serverCpuUsage / 2 ?>deg);
                 }
             }
             @keyframes fillmem{
@@ -138,7 +149,7 @@
                     transform: rotate(0deg);
                 }
                 100% {
-                    transform: rotate(<?php echo (360/100) * getServerMemUsage()[1] / 2 ?>deg);
+                    transform: rotate(<?php echo (360/100) * $serverMemUsage[1] / 2 ?>deg);
                 }
             }
         </style>
@@ -148,7 +159,7 @@
     <body>
 
         <?php
-            echo 'CPU: ' . getServerCpuUsage() . '% / Mem: ' . getServerMemUsage()[1] . '% (' . getServerMemUsage()[0] . ')';
+            echo 'CPU: ' . $serverCpuUsage . '% / Mem: ' . $serverMemUsage[1] . '% (' . $serverMemUsage[0] . ')';
         ?>
 
         <div class="wrapper">
@@ -162,7 +173,7 @@
                     </div>
                     <div class="inside-circle">
                         <h2>CPU:</h2>
-                        <p><?php echo getServerCpuUsage() ?>%</p>
+                        <p><?php echo $serverCpuUsage ?>%</p>
                     </div>
                 </div>
             </div>
@@ -176,7 +187,7 @@
                     </div>
                     <div class="inside-circle">
                         <h2>Mem:</h2>
-                        <p><?php echo getServerMemUsage()[1] ?>%</p>
+                        <p><?php echo $serverMemUsage[1] ?>%</p>
                     </div>
                 </div>
             </div>
