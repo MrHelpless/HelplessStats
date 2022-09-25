@@ -47,6 +47,10 @@
                         ?>
                     </p>
                     <img src="<?php echo $userBody; ?>"/>
+                    <?php
+                        if(isValueInFile("minecraft:story/mine_diamond", $config['pathAdvancements'] . '/' . $uuid . '.json'))
+                            echo "<p>Officially found some Diamonds</p>";
+                    ?>
                 </div>
             </div>
             
