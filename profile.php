@@ -10,6 +10,13 @@
             return false;
         }
     }
+    
+    function isValueInFile($value, $file) {
+        if( strpos(file_get_contents($file), $value) !== false)
+            return true;
+        return false;
+    }
+
     $userLastVisitors = getJsonToArray($config['fileUserCache']);
 
     foreach ($userLastVisitors as &$user) {                             //Serching Playername by UUID
@@ -21,6 +28,11 @@
     $userAvatar = 'https://crafatar.com/avatar/' . $uuid;               //Avatar Head Picture by crafatar.com
     $userBody = 'https://crafatar.com/renders/body/' . $uuid;           //Avatar Body Picture by crafatar.com
 ?>
+
+
+
+<!DOCTYPE html>
+
 
 
 <html lang=en>
@@ -40,15 +52,15 @@
 
             <div class="content">
                 <div class="box">
-                    <h1><?php echo $username ?></h1>                                <!--Username-->
+                    <h1><?php echo $username ?></h1>                                <!--Username of the Player-->
                     <p>
                         <?php                                                       //Link to namemc.com
                             echo '<a target="_blank" href="https://de.namemc.com/profile/' . $uuid . '">NameMC</a><br>';
                         ?>
                     </p>
-                    <img src="<?php echo $userBody; ?>"/>
+                    <img src="<?php echo $userBody; ?>"/>                           <!--Avatar Picture-->
                     <?php
-                        if(isValueInFile("minecraft:story/mine_diamond", $config['pathAdvancements'] . '/' . $uuid . '.json'))
+                        if(isValueInFile("minecraft:story/mine_diamond", $config['pathAdvancements'] . '/' . $uuid . '.json')) //Checks if the player found diamonds
                             echo "<p>Officially found some Diamonds</p>";
                     ?>
                 </div>
@@ -63,6 +75,8 @@
     </body>
 
 </html>
+
+
 
 <script>    //Only for mobile View!!!
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
