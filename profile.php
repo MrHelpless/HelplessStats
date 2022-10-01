@@ -4,11 +4,9 @@
     $uuid=htmlspecialchars($_GET['uuid']);
 
     function getJsonToArray($file) {                                    //Gets a PHP Array ot of a json file
-        if(file_exists($file)){
+        if(file_exists($file))
             return json_decode(file_get_contents($file));
-        } else {
-            return false;
-        }
+        return false;
     }
     
     function isValueInFile($value, $file) {
@@ -19,14 +17,13 @@
 
     $userLastVisitors = getJsonToArray($config['fileUserCache']);
 
-    foreach ($userLastVisitors as &$user) {                             //Serching Playername by UUID
-        if ($user->uuid == $uuid) {
+    foreach ($userLastVisitors as &$user) {                             //Serching Username by UUID
+        if ($user->uuid == $uuid)
             $username = $user->name;
-        }
     }
 
-    $userAvatar = 'https://crafatar.com/avatar/' . $uuid;               //Avatar Head Picture by crafatar.com
-    $userBody = 'https://crafatar.com/renders/body/' . $uuid;           //Avatar Body Picture by crafatar.com
+    $userAvatar = 'https://crafatar.com/avatar/' . $uuid;               //Avatar-Head picture by crafatar.com
+    $userBody = 'https://crafatar.com/renders/body/' . $uuid;           //Avatar-Body picture by crafatar.com
 
 
     $stringFoundItems = "";
@@ -44,7 +41,7 @@
         $stringFoundItems = ' Nothing';
 
 
-    $str = file_get_contents('/home/mc/paper/world/stats/' . $uuid . '.json');
+    $str = file_get_contents($config['pathStats'] . '/' . $uuid . '.json');         //Stats file from user
     $pattern = '/"minecraft:walk_one_cm":([0-9]*),/m';
     preg_match($pattern, $str, $arr);
     $walkDistance = round($arr[1] / 100);
@@ -62,6 +59,10 @@
     $flyDistance = round($arr[1] / 100);
 
     $allDistance = $walkDistance + $sprintDistance + $swimDistance + $flyDistance;
+
+    $pattern = '/"minecraft:play_time":([0-9]*),/m';
+    preg_match($pattern, $str, $arr);
+    $playTime = round($arr[1] / 1000 / 60);
 ?>
 
 
@@ -73,7 +74,7 @@
 <html lang=en>
 
     <head>
-        <title><?php echo $config['serverTitle'] . ' > ' . $username ?></title>     <!--ServerTitle from Config-->
+        <title><?php echo $config['serverTitle'] . ' > ' . $username ?></title>     <!--ServerTitle from config-->
         <link type="text/css" rel="stylesheet" href="style.css">
     </head>
 
@@ -81,22 +82,21 @@
         <div class="wrapper">
 
             <div class="navbar">
-                <a class="nLogo" href="./"><?php echo $config['serverTitle'] ?></a> <!--ServerTitle from Config-->
+                <a class="nLogo" href="./"><?php echo $config['serverTitle'] ?></a> <!--ServerTitle from config-->
                 <a class="nLink" href="./helplessplugin/" target="_blank">HelplessPlugin</a>
             </div>
 
             <div class="content">
                 <div class="box">
-                    <h1><?php echo $username ?></h1>                                <!--Username of the Player-->
-                    <p>
-                        <?php                                                       //Link to namemc.com
-                            echo '<a target="_blank" href="https://de.namemc.com/profile/' . $uuid . '">NameMC</a><br>';
-                        ?>
-                    </p>
-                    <img src="<?php echo $userBody; ?>"/>
-                    <?php
-                        echo '<p>Officially found:' . $stringFoundItems . '</p>';
-                        echo '<p>Walked: ' . $walkDistance . 'm | Sprinted: ' . $sprintDistance . '<br>Swept: ' . $swimDistance . 'm | Flown: ' . $flyDistance . 'm<br>In total: ' . $allDistance . 'm / ' . round($allDistance / 1000) . 'km</p>';
+                    <?php                                                           
+                        echo '<h1>' . $username . '</h1>';                                                              //Username of the player
+                        echo '<p><a target="_blank" href="https://de.namemc.com/profile/' . $uuid . '">NameMC</a></p>'; //Link to NameMC
+                        
+                        echo '<img src="' . $userBody . '"/>';                                                          //Avatar picture
+                        
+                        echo '<p>Officially found:' . $stringFoundItems . '</p>';                                       //Found blocks
+                        echo '<p>Walked: ' . $walkDistance . 'm | Sprinted: ' . $sprintDistance . 'm<br>Swept: ' . $swimDistance . 'm | Flown: ' . $flyDistance . 'm<br>In total: ' . $allDistance . 'm / ' . round($allDistance / 1000) . 'km</p>';    //Distance
+                        echo '<p>played: ' . $playTime . 'h</p>';                                                       //Playtime
                     ?>
                 </div>
             </div>
