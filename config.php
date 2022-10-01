@@ -1,7 +1,7 @@
 <?php
-    $serverDomain   = 'mc.mrhelpless.xyz';                                      //Domain of your MC-Server / example <mc.mrhelpless.xyz>
-    $serverVersion  = 'PaperMC 1.18.2';                                         //Version of your MC-Server / example <PaperMC 1.18.2>
-    $pathServer     = '/home/mc/paper';                                         //Path where your MC-Server is lokated / example </home/mc/paper> (folder where your server.jar is in)
+    $serverDomain   = 'mc.mrhelpless.xyz';      //Domain of your MC-Server / example <mc.mrhelpless.xyz>
+    $serverVersion  = 'PaperMC 1.18.2';         //Version of your MC-Server / example <PaperMC 1.18.2>
+    $pathServer     = '/home/mc/paper';         //Path where your MC-Server is lokated / example </home/mc/paper> (folder where your server.jar is in)
 
     $config = array(
         'serverTitle'       => $serverDomain,
@@ -13,6 +13,7 @@
         'fileUserCache'     => $pathServer.'/usercache.json',
 
         'pathAdvancements'  => $pathServer.'/world/advancements',
+        'pathStats'  	    => $pathServer.'/world/stats',
 
         'pathWorld'         => $pathServer.'/world',
         'pathWorldNether'   => $pathServer.'/world_nether',
