@@ -20,6 +20,41 @@
 
     $userAvatar = 'https://crafatar.com/avatar/' . $uuid;               //Avatar Head Picture by crafatar.com
     $userBody = 'https://crafatar.com/renders/body/' . $uuid;           //Avatar Body Picture by crafatar.com
+
+
+    $stringFoundItems = "";
+
+    if(isValueInFile("minecraft:story/mine_stone", $config['pathAdvancements'] . '/' . $uuid . '.json'))
+        $stringFoundItems .= ' <span style="color: #6d6d6d; font-weight: bolder;">Stone</span>';
+
+    if(isValueInFile("minecraft:story/mine_diamond", $config['pathAdvancements'] . '/' . $uuid . '.json'))
+        $stringFoundItems .= ', <span style="color: #41b8df; font-weight: bolder;">Diamonds</span>';
+
+    if(isValueInFile("minecraft:nether/obtain_ancient_debris", $config['pathAdvancements'] . '/' . $uuid . '.json'))
+        $stringFoundItems .= ', <span style="color: #6a0606; font-weight: bolder;">Ancient_Debri</span>';
+
+    if($stringFoundItems == "")
+        $stringFoundItems = ' Nothing';
+
+
+    $str = file_get_contents('/home/mc/paper/world/stats/' . $uuid . '.json');
+    $pattern = '/"minecraft:walk_one_cm":([0-9]*),/m';
+    preg_match($pattern, $str, $arr);
+    $walkDistance = round($arr[1] / 100);
+
+    $pattern = '/"minecraft:sprint_one_cm":([0-9]*),/m';
+    preg_match($pattern, $str, $arr);
+    $sprintDistance = round($arr[1] / 100);
+
+    $pattern = '/"minecraft:swim_one_cm":([0-9]*),/m';
+    preg_match($pattern, $str, $arr);
+    $swimDistance = round($arr[1] / 100);
+
+    $pattern = '/"minecraft:fly_one_cm":([0-9]*),/m';
+    preg_match($pattern, $str, $arr);
+    $flyDistance = round($arr[1] / 100);
+
+    $allDistance = $walkDistance + $sprintDistance + $swimDistance + $flyDistance;
 ?>
 
 
@@ -47,6 +82,10 @@
                         ?>
                     </p>
                     <img src="<?php echo $userBody; ?>"/>
+                    <?php
+                        echo '<p>Officially found:' . $stringFoundItems . '</p>';
+                        echo '<p>Walked: ' . $walkDistance . 'm | Sprinted: ' . $sprintDistance . '<br>Swept: ' . $swimDistance . 'm | Flown: ' . $flyDistance . 'm<br>In total: ' . $allDistance . 'm / ' . round($allDistance / 1000) . 'km</p>';
+                    ?>
                 </div>
             </div>
             
