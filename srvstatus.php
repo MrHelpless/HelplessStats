@@ -1,9 +1,9 @@
 <?php
     function getServerCpuUsage() {
-        $load = sys_getloadavg();
-        $load = $load[0]*100;
+        $cpuLoad = sys_getloadavg();
+        $cpuLoad = $cpuLoad[0]*100;
 
-        return $load;
+        return $cpuLoad;
     }
 
     $serverCpuUsage = getServerCpuUsage();
@@ -19,7 +19,7 @@
         $memUsageInPerc = round($mem[2]/$mem[1]*100, 2);
         $memUsageInGiga = round($mem[2]/1000000, 2) . 'GB/' . round($mem[1]/1000000, 2) . 'GB';
 
-        //[<1GB/4GB>, <25%>]<meta http-equiv="refresh" content="5">
+        //     [<1GB/4GB>      , <25%>          ]
         return [$memUsageInGiga, $memUsageInPerc];
     }
 

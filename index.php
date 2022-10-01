@@ -18,11 +18,11 @@
         }
     }
 
-    function getDirectorySize($path){                                   //Gets the Size of a Directory in Bytes
+    function getDirectorySize($path) {                                  //Gets the Size of a Directory in Bytes
         $bytestotal = 0;
         $path = realpath($path);
-        if($path!==false && $path!='' && file_exists($path)){
-            foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)) as $object){
+        if($path!==false && $path!='' && file_exists($path)) {
+            foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)) as $object) {
                 $bytestotal += $object->getSize();
             }
         }
@@ -77,9 +77,11 @@
                 <div class="box">
                     <?php                                               //All Player who were playing on your MC-Server
                         echo '<h1>All Users (' . count($userFullList) . ')</h1>';
+                        echo '<div class="box-content">';
                         foreach ($userFullList as &$user) {
                             echo "<a href=\"./profile.php?uuid=" . explode(".", $user)[0] . "\"><img style=\"width: 96px; height: 96px;\" src=\"https://crafatar.com/avatars/" . $user . "\" alt=\"avatar\"></a>";
                         }
+                        echo '</div>';
                     ?>
                 </div>
                 <div class="box">

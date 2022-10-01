@@ -10,6 +10,13 @@
             return false;
         }
     }
+    
+    function isValueInFile($value, $file) {
+        if( strpos(file_get_contents($file), $value) !== false)
+            return true;
+        return false;
+    }
+
     $userLastVisitors = getJsonToArray($config['fileUserCache']);
 
     foreach ($userLastVisitors as &$user) {                             //Serching Playername by UUID
@@ -58,6 +65,11 @@
 ?>
 
 
+
+<!DOCTYPE html>
+
+
+
 <html lang=en>
 
     <head>
@@ -75,16 +87,23 @@
 
             <div class="content">
                 <div class="box">
-                    <h1><?php echo $username ?></h1>                                <!--Username-->
+                    <h1><?php echo $username ?></h1>                                <!--Username of the Player-->
                     <p>
                         <?php                                                       //Link to namemc.com
                             echo '<a target="_blank" href="https://de.namemc.com/profile/' . $uuid . '">NameMC</a><br>';
                         ?>
                     </p>
+<<<<<<< HEAD
                     <img src="<?php echo $userBody; ?>"/>
                     <?php
                         echo '<p>Officially found:' . $stringFoundItems . '</p>';
                         echo '<p>Walked: ' . $walkDistance . 'm | Sprinted: ' . $sprintDistance . '<br>Swept: ' . $swimDistance . 'm | Flown: ' . $flyDistance . 'm<br>In total: ' . $allDistance . 'm / ' . round($allDistance / 1000) . 'km</p>';
+=======
+                    <img src="<?php echo $userBody; ?>"/>                           <!--Avatar Picture-->
+                    <?php
+                        if(isValueInFile("minecraft:story/mine_diamond", $config['pathAdvancements'] . '/' . $uuid . '.json')) //Checks if the player found diamonds
+                            echo "<p>Officially found some Diamonds</p>";
+>>>>>>> d058a858ac58d16f164fb4bf3b92740c9daddee3
                     ?>
                 </div>
             </div>
@@ -98,6 +117,8 @@
     </body>
 
 </html>
+
+
 
 <script>    //Only for mobile View!!!
     // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
